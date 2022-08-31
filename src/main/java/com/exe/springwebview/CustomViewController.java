@@ -14,7 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class CustomViewController {
 
-	/*넘어오는 메소드 방식을 언급하지 않으면 디폴트로 get방식*/
+	/**넘어오는 메소드 방식을 언급하지 않으면 디폴트로 get방식*/
 	@RequestMapping(value = "/simpleCustomView.action")
 	public ModelAndView customView() {
 		
