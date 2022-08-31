@@ -56,6 +56,8 @@ public class CustomViewController {
 	public String upload(MultipartHttpServletRequest request,String str) throws Exception{
 		
 		String path = request.getSession().getServletContext().getRealPath("/WEB-INF/files");
+//		String path = request.getSession().getServletContext().getRealPath("/resources/img");
+//		String path = request.getSession().getServletContext().getRealPath("/img");
 		
 		/**home.jsp¿« name=upload ¿Œ∞Õ*/
 		MultipartFile file = request.getFile("upload");
