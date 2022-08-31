@@ -4,6 +4,7 @@ import java.io.FileOutputStream;
 import java.io.InputStream;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
@@ -67,12 +68,16 @@ public class CustomViewController {
 				
 				FileOutputStream fos = new FileOutputStream(path + "/" + file.getOriginalFilename());
 				
+				/*
 				int data;
 				byte[] bufffer = new byte[4096];
 				
 				while((data=is.read(bufffer, 0, bufffer.length))!=-1) {
 					fos.write(bufffer,0,data);
 				}
+				*/
+				
+				FileCopyUtils.copy(is, fos);
 				
 				is.close();
 				fos.close();
@@ -85,5 +90,14 @@ public class CustomViewController {
 		return "uploadResult";
 	}
 	
+	@RequestMapping(value = "download.action")
+	public ModelAndView download() {
+		
+		ModelAndView mav = new ModelAndView();
+		
+		mav.setView(new DownloadView());
+		
+		return mav;
+	}
 	
 }
